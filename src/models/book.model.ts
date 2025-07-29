@@ -7,6 +7,8 @@ type Book = {
     isbn?: string;
     category?: string;
     copiesAvailable?: number;
+    coverColor?: string;
+    coverImage?: string; 
 }
 const bookSchema = new mongoose.Schema<Book>({
     title: {
@@ -37,6 +39,16 @@ const bookSchema = new mongoose.Schema<Book>({
         type: Number,
         default: 0,
         min: [0, "Copies available cannot be negative"]
+    },
+    coverColor: {
+        type: String,
+        default: "white",
+        trim: true
+    },
+    coverImage: {
+        type: String,
+        default: "",
+        trim: true
     }
 });
 export const BookModel = mongoose.model("Book", bookSchema);
